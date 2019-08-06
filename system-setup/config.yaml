@@ -1,0 +1,89 @@
+accessControl:
+  salt: cdpfwHsBgwL0x5BGAZHU4wTUMz2gtdoK
+api:
+  key: E1E27EF756A6446F989768CB75B79239
+controls:
+- command: SET_KINEMATIC_POSITION
+  name: Enable steppers
+plugins:
+  actioncommands:
+    command_definitions:
+    - action: lightson
+      command: sudo uhubctl -a on -p 2 -l 1-1
+      enabled: true
+      type: system
+    - action: lightsoff
+      command: sudo uhubctl -a off -p 2 -l 1-1
+      enabled: true
+      type: system
+  announcements:
+    _config_version: 1
+    channels:
+      _blog:
+        read_until: 1563963300
+      _important:
+        read_until: 1521111600
+      _octopi:
+        read_until: 1549966200
+      _plugins:
+        read_until: 1560211200
+      _releases:
+        read_until: 1557824400
+  cura:
+    cura_engine: /usr/local/bin/cura_engine
+  discovery:
+    publicPort: 80
+    upnpUuid: 459b4ca9-5c42-4967-b01c-1f7af89f41dd
+  errortracking:
+    unique_id: 6fd3a445-f5e4-4949-b566-a7eafb807ac3
+  softwareupdate:
+    _config_version: 6
+    check_providers:
+      actioncommands: actioncommands
+  tracking:
+    enabled: false
+    unique_id: 9c0369d1-7540-47f8-83cf-0fea82759385
+printerProfiles:
+  default: _default
+serial:
+  additionalPorts:
+  - /dev/ttyS0
+  - /tmp/printer
+  disconnectOnErrors: false
+server:
+  commands:
+    serverRestartCommand: sudo service octoprint restart
+    systemRestartCommand: sudo shutdown -r now
+    systemShutdownCommand: sudo shutdown -h now
+  firstRun: false
+  onlineCheck:
+    enabled: true
+  pluginBlacklist:
+    enabled: true
+  secretKey: 98R4tyDKf1x2bP3kaoVY0gcrJyZ5Ja0W
+  seenWizards:
+    corewizard: 3
+    cura: null
+    tracking: null
+system:
+  actions:
+  - action: LightsOn
+    command: sudo uhubctl -a on -p 2 -l 1-1
+    name: LightsOn
+  - action: LightsOff
+    command: sudo uhubctl -a off -p 2 -l 1-1
+    name: LightsOff
+temperature:
+  profiles:
+  - bed: 100
+    chamber: null
+    extruder: 210
+    name: ABS
+  - bed: 60
+    chamber: null
+    extruder: 180
+    name: PLA
+webcam:
+  ffmpeg: /usr/bin/avconv
+  snapshot: http://127.0.0.1:8080/?action=snapshot
+  stream: /webcam/?action=stream
